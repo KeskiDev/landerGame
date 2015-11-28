@@ -95,7 +95,12 @@ public class driver extends JFrame{
             }
             if(e.getSource() == practiceLanding){
                 dispose();
-                new practiceLevel();
+                try{
+                    new practiceLevel();
+                }catch(InterruptedException sleep){
+                    Thread.currentThread().interrupt();
+                }
+                //new practiceLevel();
             }
             if(e.getSource() == help){
                 JOptionPane.showMessageDialog(null, "You're landing on a new planet, but it's a little \"rocky\" \n" +

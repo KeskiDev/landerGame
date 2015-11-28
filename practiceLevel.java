@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Area;
+import java.util.Random;
 
 /**
  * Created by pikku on 10/23/2015.
@@ -15,6 +16,7 @@ public class practiceLevel extends JFrame implements ActionListener {
     private final int WIDTH = 700, HEIGHT = 800;
     public int xCord = WIDTH/2 - 75, yCord = 200;
     public JLabel landerLabel, rockLabel;
+
 
     public lander ship;
     public rock asteroid;
@@ -26,7 +28,7 @@ public class practiceLevel extends JFrame implements ActionListener {
 
 
 
-    public practiceLevel(){
+    public practiceLevel() throws InterruptedException {
         setTitle("We talkin bout practice!");
         setLayout(null);
         setSize(WIDTH,HEIGHT);
@@ -47,12 +49,6 @@ public class practiceLevel extends JFrame implements ActionListener {
 
 
 
-
-        //set a landing zone
-
-
-
-        //bring in the lander
 
 
 
