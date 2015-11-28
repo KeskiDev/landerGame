@@ -18,7 +18,7 @@ import java.io.IOException;
 public class driver extends JFrame{
     private final int WIDTH = 1000, HEIGHT = 900;
     private JLabel titleLabel, landerLabel, backgroundLabel; //for the title of the game
-    private JButton startButton, help;
+    private JButton startButton, practiceLanding, help;
     private eventHandler handles;
     private ImageIcon lander, background;
 
@@ -35,14 +35,18 @@ public class driver extends JFrame{
         titleLabel = new JLabel("Lander on Pluto!",SwingConstants.CENTER);
         startButton = new JButton("Initiate Landing");
         help = new JButton("Info/Rules");
+        practiceLanding = new JButton("Training");
 
 
 
         startButton.setSize(200,50);
-        startButton.setLocation((WIDTH/2-100),700);
+        startButton.setLocation((WIDTH/2+10),700);
 
         help.setSize(90,50);
         help.setLocation(850,50);
+
+        practiceLanding.setSize(200,50);
+        practiceLanding.setLocation((WIDTH/2-210),700);
 
         try {
             background = new ImageIcon(ImageIO.read(new File("./images/ringPluto.jpg")));
@@ -70,11 +74,13 @@ public class driver extends JFrame{
         pane.add(help);
         pane.add(landerLabel);
         pane.add(startButton);
+        pane.add(practiceLanding);
 
         pane.add(backgroundLabel);
 
         startButton.addActionListener(handles);
         help.addActionListener(handles);
+        practiceLanding.addActionListener(handles);
 
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -84,13 +90,17 @@ public class driver extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e){
             if(e.getSource() == startButton){
+                dispose();
                 new startGame();
             }
+            if(e.getSource() == practiceLanding){
+                dispose();
+                new practiceLevel();
+            }
             if(e.getSource() == help){
-                JOptionPane.showMessageDialog(null, "You are the first Astronauts landing on Pluto! \n Gracefully guide your lander to the landing zone before you crazy land. " +
-                        "\n You wont stay in a place for too long so prepare for harder terrain! \n " +
-                        "Use the arrow keys to guide your lander. \n Up arrow = Thrusters to slow you down\n Down arrow = speed up your descent\n " +
-                        "Right and Left arrow = guide you right and left.");
+                JOptionPane.showMessageDialog(null, "You're landing on a new planet, but it's a little \"rocky\" \n" +
+                        "Guide your lander through the rocks in the planet's atmosphere to get more points and experience\n" +
+                        "Good luck pilot! ");
             }
 
         }
